@@ -1,0 +1,31 @@
+<a class="avatar">
+  <img src="{{message.avatar}}">
+</a>
+<div class="content">
+  <a class="author">{{message.name}}</a>
+  <div class="metadata">
+    <span class="date">{{time-ago-in-words message.date}}</span>
+  </div>
+  {{#if isEditing}}
+  <div class="text">
+    <form {{action "submitEdit" on="submit"}}>
+      <div class="ui form">
+        <div class="ui field">
+          {{textarea rows="2" value=message.body placeholder="What's new?"}}
+        </div>
+        <div class="ui field">
+          <button class="ui button green tiny">Shtweedit</button>
+          <button class="ui button tiny" {{action "toggleEdit"}}>Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {{else}}
+  <div class="text">
+    {{message.body}}
+  </div>
+  <div class="actions">
+    <a class="reply" {{action "toggleEdit"}}>Edit</a>
+  </div>
+  {{/if}}
+</div>
