@@ -44,7 +44,13 @@ export default Ember.Route.extend({
         date: new Date(Date.now()),
         id:   _.max(_.pluck(model, 'id')) + 1
       });
+      
       model.pushObject(newMessage);
+      this.get('Beam').push("post created", { post: model }, this);
+    },
+
+    postEdited: function(post) {
+      this.get('Beam').push("post edited", { post: post }, this);
     },
 
     login: function() {
