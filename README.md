@@ -60,6 +60,7 @@ ADAPTERS
     -> Slide on adapters. Adapters extend from the BeamBase adapter. They have a bunch of methods already built in for you, so creating a new adapter is really quick and easy.
       -> Main methods: setup, emit
     -> Create mixpanel adapter (just the setup and emit method)
+      -> make sure to include the client() method and return mixpanel
       -> use keyCase: camelcase
       -> use flattenPayload: true
       -> "I'll explain these later"

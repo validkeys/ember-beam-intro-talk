@@ -18,6 +18,10 @@ export default BaseAdapter.extend({
   /* jshint ignore:end */
   },
 
+  client() {
+    return mixpanel;
+  },
+
 
   // Send your events to your provider
   // ex. mixpanel.track(eventName, payload);

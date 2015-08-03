@@ -7,7 +7,7 @@ export default BaseHook.extend({
   // Each hook is passed the eventPackage and the context of the caller
   hooks: {
     "page view": function(eventPackage, context) {
-      mixpanel.people.increment("page views");
+      this.client().people.increment("page views");
     }
   }
 
