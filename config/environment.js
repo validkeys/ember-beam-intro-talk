@@ -16,6 +16,29 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    beam: {
+      providers: {
+        debug: {
+          auth: true
+        },
+        mixpanel: {
+          auth:   {
+            token: "44eeb7f769c8d04726ffa9e61ac3282a"
+          },
+          config: {
+            sanitize: {
+              flattenPayload: true
+            }
+          }
+        }
+      },
+      config:    {
+        sanitize: {
+          keyFormat: "camelcase"
+        }
+      }
     }
   };
 

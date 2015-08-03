@@ -37,7 +37,8 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-faker": "1.1.0",
-    "stylus": "^0.52.0"
+    "stylus": "^0.52.0",
+    "ember-beam": "git+https://git@github.com:validkeys/ember-beam.git#be91dcc3d493593aa0372e13a9fb33691e56cd78"
   },
   "dependencies": {}
 }

@@ -45,6 +45,13 @@ export default Ember.Route.extend({
         id:   _.max(_.pluck(model, 'id')) + 1
       });
       model.pushObject(newMessage);
+    },
+
+    didTransition: function() {
+      Ember.run(this, function() {
+        let path = document.location.pathname;
+        this.get('Beam').push("page view", { path: path, user: { id: 1 } }, this);
+      });
     }
   }
 
