@@ -2,6 +2,13 @@ import BaseTransform from 'ember-beam/beams/transforms/base';
 
 export default BaseTransform.extend({
 
+  // OPTIONAL
+  // Contains a key / value list of fields to map given any possible payload.
+  // ex. "author": ['id','name']
+  // This mapping will strip out all keys other than those specified within
+  // an author attribute in your payload.
+  mappings: {},
+
   // Any default event properties that you want
   // added to every event
   defaults(payload) {
