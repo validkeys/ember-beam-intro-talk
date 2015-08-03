@@ -7,7 +7,9 @@ export default BaseTransform.extend({
   // ex. "author": ['id','name']
   // This mapping will strip out all keys other than those specified within
   // an author attribute in your payload.
-  mappings: {},
+  mappings: {
+    "post": ["id","name","body","avatar"]
+  },
 
   // Any default event properties that you want
   // added to every event
