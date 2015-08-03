@@ -35,6 +35,8 @@ module.exports = function(environment) {
         }
       },
       config:    {
+        attachCurrentUserToAllEvents: true,
+        currentUserKey:               "user",
         sanitize: {
           keyFormat: "camelcase"
         }

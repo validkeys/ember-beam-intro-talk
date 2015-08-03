@@ -47,10 +47,16 @@ export default Ember.Route.extend({
       model.pushObject(newMessage);
     },
 
+    login: function() {
+      let currentUser = this.get('currentUser');
+      this.get('Beam').setCurrentUser(currentUser, "email", false);
+      alert("Logged In!");
+    },
+
     didTransition: function() {
       Ember.run(this, function() {
         let path = document.location.pathname;
-        this.get('Beam').push("page view", { path: path, user: { id: 1 } }, this);
+        this.get('Beam').push("page view", { path: path }, this);
       });
     }
   }

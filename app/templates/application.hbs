@@ -1,4 +1,15 @@
 <div class="ui page grid centered">
+<div class="row">
+  <div class="eight wide column">
+    <button class="ui button tiny" {{action "login"}}>Login</button>
+    {{#link-to "about"}}About{{/link-to}}
+  </div>
+</div>
+<div class="row">
+  <div class="eight wide column">
+    {{outlet}}
+  </div>
+</div>
   <div class="row">
     <div class="eight wide column center aligned">
       <h2 id="title">Shitwitter</h2>

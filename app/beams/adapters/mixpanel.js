@@ -32,7 +32,7 @@ export default BaseAdapter.extend({
   // This is typicaly when the user first signs up
   // ex. mixpanel.identify(identifier)
   identify( identifier ) {
-    return this._super.apply(this, arguments);
+    mixpanel.identify(identifier);
   },
 
   // OPTIONAL
@@ -40,7 +40,7 @@ export default BaseAdapter.extend({
   // This is typically either an email address or your internal id
   // ex. mixpanel.alias(identifier)
   alias( identifier ) {
-    return this._super.apply(this, arguments);
+    mixpanel.alias(identifier);
   }, 
 
   // OPTIONAL
@@ -49,6 +49,7 @@ export default BaseAdapter.extend({
   // ex. mixpanel.people.set(data)
   setUserInfo( data = {} ) {
     return this._super.apply(this, arguments);
+    mixpanel.people.set(data);
   }
 
 });
