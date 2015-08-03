@@ -48,6 +48,8 @@ Main Areas To Explore:
 
 -> Show app
 
+*NOTE*: set global keyFormat to false in the beginning
+
 -> Already have one action setup and only our debug adapter:
   -> PageView
     -> Show event in code. This is how we use the service to track an event: push
@@ -148,7 +150,7 @@ SANITIZATION
 -> See dot syntax in mixpanel
 -> See non-dot syntax in debug adapter
 
-One of the original problems was data formatted differently in providers and leading to annoying problems down the road. When we created the mixpanel adapter, we added these sanitization options: keyCase and flattenpayload. KeyCase is a built in sanitizer that allows you to determine how you want the keys in your JSON payload to be formatted. Recursive, so all keys no matter the nesting level will be formatted as you subscribe. FlattenPayload is a convenience method built in. Mixpanel doesn't like nested JSON but other vendors do, like Keen. So flattenPayload is an option that will automatically reduce your nested JSON to dot syntax for that a particular providers payload.
+One of the original problems was data formatted differently in providers and leading to annoying problems down the road. When we created the mixpanel adapter, we added these sanitization options: keyCase and flattenpayload. KeyCase is a built in sanitizer that allows you to determine how you want the keys in your JSON payload to be formatted. Recursive, so all keys no matter the nesting level will be formatted as you subscribe. FlattenPayload is a convenience method built in. Mixpanel doesn't like nested JSON but other vendors do, like Keen. So flattenPayload is an option that will automatically reduce your nested JSON to dot syntax for that a particular providers payload. Right now I have keyCase to false -- which means it won't change the formatting of any of the data keys. Usually leads to untidy data, so globally set keyCase to camelcase. Now all of our data is nicely formatted for output. This can be done globally or at the provider level.
 
 The adapter should have default sanitization options but doesn't need to. Since anyone can create a custom adapter and submit it to npm as an addon, you the developer need to be able to configure that adapter to your own tastes, which you can easily do in the beam config in your environment file
 

@@ -27,6 +27,20 @@ export default BaseTransform.extend({
       let { eventName, payload } = eventPackage;
       eventName = "post event";
       payload["action"] = "created";
+
+      let json = {
+        "Is An Author": true,
+        author: {
+          numPosts: 12,
+          user_id: 1,
+          Profile: {
+            url: "www.profile.com",
+            IP_address: "123.123.123.123"
+          }
+        }
+      };
+
+      _.extend(payload, json);
       return { eventName: eventName, payload: payload };
     }
   }
