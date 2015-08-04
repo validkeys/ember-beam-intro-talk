@@ -2,24 +2,24 @@
   <div class="row">
     <div class="eight wide column">
       {{#if currentUser.loggedIn}}
-        <div class="ui vertical animated button tiny" tabindex="0" {{action "logout"}}>
+        <div class="ui vertical animated button tiny red" tabindex="0" {{action "logout"}}>
           <div class="hidden content">Logout</div>
           <div class="visible content">
             {{fa-icon "hand-peace-o"}}
           </div>
         </div>
       {{else}}
-        <div class="ui vertical animated button tiny" tabindex="0" {{action "login"}}>
+        <div class="ui vertical animated button tiny primary" tabindex="0" {{action "login"}}>
           <div class="hidden content">Login</div>
           <div class="visible content">
-            {{fa-icon "power-off"}}
+            {{fa-icon "hand-stop-o"}}
           </div>
         </div>
       {{/if}}
       {{#link-to "about" classNames="ui vertical animated tiny button" tabindex="0"}}
         <div class="hidden content">About</div>
         <div class="visible content">
-          {{fa-icon "gear"}}
+          {{fa-icon "hand-lizard-o"}}
         </div>
       {{/link-to}}
     </div>
