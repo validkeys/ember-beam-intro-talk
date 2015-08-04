@@ -24,19 +24,20 @@ function generateMessages(numMessages = 10) {
 
 export default Ember.Route.extend({
 
+  beforeModel() {
+    let localUser = localStorage.getItem("user"),
+        currentUser = this.get('currentUser');
+    if (localUser) {
+      currentUser.set("loggedIn", true);
+    }
+  },  
+
   model() {
     return generateMessages(10);
   },
 
-  setupController(controller, model) {
-    this._super(controller, model);
-    controller.set("attrs", {
-      messages: model
-    });
-  },
-
   actions: {
-    createPost: function(body) {
+    createPost(body) {
       let model = this.get('currentModel');
 
       let newMessage = buildMessage({
@@ -44,7 +45,34 @@ export default Ember.Route.extend({
         date: new Date(Date.now()),
         id:   _.max(_.pluck(model, 'id')) + 1
       });
+      
       model.pushObject(newMessage);
+      alert("Post Created!");
+      // this.get('Beam').push("post created", { post: model }, this);
+    },
+
+    postEdited(post) {
+      alert("Edit Complete!");
+      // this.get('Beam').push("post edited", { post: post }, this);
+    },
+
+    login() {
+      let currentUser = this.get('currentUser');
+      localStorage.setItem("user", JSON.stringify(currentUser));
+      currentUser.set("loggedIn",  true);
+      // this.get('Beam').setCurrentUser(currentUser, "email", false);
+    },
+
+    logout() {
+      this.get('currentUser').set("loggedIn", false);
+      localStorage.removeItem("user");
+    },
+
+    didTransition() {
+      Ember.run(this, function() {
+        let path = document.location.pathname;
+        this.get('Beam').push("page view", { path: path }, this);
+      });
     }
   }
 

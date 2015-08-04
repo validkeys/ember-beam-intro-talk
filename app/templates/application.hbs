@@ -1,19 +1,36 @@
 <div class="ui page grid centered">
   <div class="row">
+    <div class="eight wide column">
+      {{#if currentUser.loggedIn}}
+        <div class="ui vertical animated button tiny" tabindex="0" {{action "logout"}}>
+          <div class="hidden content">Logout</div>
+          <div class="visible content">
+            {{fa-icon "hand-peace-o"}}
+          </div>
+        </div>
+      {{else}}
+        <div class="ui vertical animated button tiny" tabindex="0" {{action "login"}}>
+          <div class="hidden content">Login</div>
+          <div class="visible content">
+            {{fa-icon "power-off"}}
+          </div>
+        </div>
+      {{/if}}
+      {{#link-to "about" classNames="ui vertical animated tiny button" tabindex="0"}}
+        <div class="hidden content">About</div>
+        <div class="visible content">
+          {{fa-icon "gear"}}
+        </div>
+      {{/link-to}}
+    </div>
+  </div>
+
+  <div class="row">
     <div class="eight wide column center aligned">
       <h2 id="title">Shitwitter</h2>
     </div>
   </div>
-  <div class="row">
-    <div class="eight wide column">
-      {{message-form onCreate="createPost"}}
-    </div>
-  </div>
-  <div class="row">
-    <div class="eight wide column">
-      {{messages-container messages=attrs.messages}}
-    </div>
-  </div>
-</div>
+  
+  {{outlet}}
 
-{{outlet}}
+</div>
