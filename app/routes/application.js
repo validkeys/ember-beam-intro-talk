@@ -19,7 +19,7 @@ export default Ember.Route.extend({
     let currentUser = this.get('currentUser');
     localStorage.setItem("user", JSON.stringify(currentUser));
     currentUser.set("loggedIn", true);
-    // this.get('Beam').setCurrentUser(currentUser, "email", false);
+    this.get('Beam').setCurrentUser(currentUser, "email", false);
   },
 
   actions: {
@@ -34,12 +34,25 @@ export default Ember.Route.extend({
       
       model.pushObject(newMessage);
       alert("Post Created!");
-      // this.get('Beam').push("post created", { post: model }, this);
+
+      let json = {
+        "Is An Author": true,
+        author: {
+          numPosts: 12,
+          user_id: 1,
+          Profile: {
+            url: "www.profile.com",
+            IP_address: "123.123.123.123"
+          }
+        }
+      };
+
+      this.get('Beam').push("post created", _.extend({ post: newMessage }, json), this);
     },
 
     postEdited(post) {
       alert("Edit Complete!");
-      // this.get('Beam').push("post edited", { post: post }, this);
+      this.get('Beam').push("post edited", { post: post }, this);
     },
 
     login() {

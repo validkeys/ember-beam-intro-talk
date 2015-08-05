@@ -25,13 +25,23 @@ module.exports = function(environment) {
 
 
     beam: {
-      config:     {
+      config: {
         sanitize: {
-          keyFormat: false
-        }
+          keyFormat: "camelcase"
+        },
+        attachCurrentUserToAllEvents: true,
+        currentUserKey:               "user"
       },
       providers:  {
-        debug:  { auth: true }
+        debug:    { auth: true },
+        mixpanel: {
+          auth: { token: "a3dc59bcb5ac053831557e554f66ba9e" },
+          config: {
+            sanitize: {
+              flattenPayload: true
+            }
+          }
+        }
       }
     }
 

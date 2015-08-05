@@ -8,3 +8,21 @@ mixpanel.init(providerConfiguration.auth.token);
 
 
 MIXPANEL TOKEN: a3dc59bcb5ac053831557e554f66ba9e
+
+
+----------------------
+
+Mixpanel setUserInfo:
+
+    let specialProps  = ['name','created_at','createdAt','email','phone','first_name','last_name'],
+        localUserData = _.clone(data),
+        userKeys      = _.keys(localUserData);
+
+    _.each(specialProps, (prop) => {
+      if (userKeys.indexOf(prop) > -1) {
+        localUserData['$' + prop] = localUserData[prop];
+        delete localUserData[prop];
+      }
+    });
+    
+    this.client().people.set(localUserData);

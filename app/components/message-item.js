@@ -12,6 +12,7 @@ export default Ember.Component.extend({
 
     submitEdit: function() {
       this.toggleProperty("isEditing");
+      this.sendAction('onEdit', this.get('message'));
     }
   }
 
