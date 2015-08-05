@@ -34,7 +34,27 @@ export default Ember.Route.extend({
       
       model.pushObject(newMessage);
       alert("Post Created!");
+
+      // STEP 1 vvv
+      
       // this.get('Beam').push("post created", { post: newMessage }, this);
+
+
+      // STEP 2 vvvvvv
+
+      // let json = {
+      //   "Is An Author": true,
+      //   author: {
+      //     numPosts: 12,
+      //     user_id: 1,
+      //     Profile: {
+      //       url: "www.profile.com",
+      //       IP_address: "123.123.123.123"
+      //     }
+      //   }
+      // };
+
+      // this.get('Beam').push("post created", _.extend({ post: newMessage }, json), this);
     },
 
     postEdited(post) {
