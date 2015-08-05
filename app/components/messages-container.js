@@ -7,5 +7,11 @@ export default Ember.Component.extend({
   sortedMessages: Ember.computed('messages.@each.date', function() {
     let messages = this.get('messages');
     return _.sortBy(messages, (message) => -(new Date(message.date).getTime()));
-  })
+  }),
+
+  actions: {
+    postEdited: function(post) {
+      this.sendAction('onEdit', post);
+    }
+  }
 });

@@ -1,8 +1,8 @@
 export function initialize(container, application) {
   application.register("currentuser:main", Ember.Object.create({
     id:         1,
-    firstName:  "Kyle",
-    lastName:   "Davis",
+    first_name:  "Kyle",
+    last_name:   "Davis",
     email:      "validkeys@gmail.com",
     username:   "validkeys",
     loggedIn:   false
