@@ -31,7 +31,7 @@ module.exports = function(environment) {
         }
       },
       providers:  {
-        debug: { auth: true }
+        debug:  { auth: true }
       }
     }
 

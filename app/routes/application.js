@@ -1,39 +1,25 @@
 import Ember from 'ember';
 import faker from 'faker';
-
-function buildMessage(data) {
-  let id    = data.id || faker.random.number();
-  let imgId = 350 + id;
-  let def = {
-      id:     faker.random.number(),
-      body:   faker.lorem.sentence(),
-      avatar: "http://lorempixel.com/people/400/" + imgId,
-      name:   faker.name.firstName(),
-      date:   faker.date.recent()
-    }
-  return _.extend(def, data);
-}
-
-function generateMessages(numMessages = 10) {
-  let messages = Ember.A([]);
-  for (var i = 1; i <= numMessages; i++) {
-    messages.pushObject(buildMessage({id: i}))
-  };
-  return messages;
-}
+import { buildMessage, generateMessages } from '../utils/message-builder';
 
 export default Ember.Route.extend({
 
   beforeModel() {
-    let localUser = localStorage.getItem("user"),
-        currentUser = this.get('currentUser');
+    let localUser = localStorage.getItem("user");
     if (localUser) {
-      currentUser.set("loggedIn", true);
+      this.loginUser()
     }
   },  
 
   model() {
     return generateMessages(10);
+  },
+
+  loginUser() {
+    let currentUser = this.get('currentUser');
+    localStorage.setItem("user", JSON.stringify(currentUser));
+    currentUser.set("loggedIn", true);
+    // this.get('Beam').setCurrentUser(currentUser, "email", false);
   },
 
   actions: {
@@ -57,10 +43,7 @@ export default Ember.Route.extend({
     },
 
     login() {
-      let currentUser = this.get('currentUser');
-      localStorage.setItem("user", JSON.stringify(currentUser));
-      currentUser.set("loggedIn",  true);
-      // this.get('Beam').setCurrentUser(currentUser, "email", false);
+      this.loginUser();
     },
 
     logout() {

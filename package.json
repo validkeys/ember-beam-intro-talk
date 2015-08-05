@@ -39,7 +39,7 @@
     "ember-export-application-global": "^1.0.2",
     "ember-faker": "1.1.0",
     "stylus": "^0.52.0",
-    "ember-beam": "git+https://git@github.com:validkeys/ember-beam.git#2e0e415a3d448e983b409fcbe63db131fbb8185c"
+    "ember-beam": "git+https://git@github.com:validkeys/ember-beam.git#44512cd32a1c1a38bdc2eb32437bced1c80f9852"
   },
   "dependencies": {}
 }
