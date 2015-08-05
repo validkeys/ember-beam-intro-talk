@@ -26,3 +26,20 @@ Mixpanel setUserInfo:
     });
     
     this.client().people.set(localUserData);
+
+
+--------------------
+
+Sanitization:
+
+{
+  "Is An Author": true,
+  author: {
+    numPosts: 12,
+    user_id: 1,
+    Profile: {
+      url: "www.profile.com",
+      IP_address: "123.123.123.123"
+    }
+  }
+};
