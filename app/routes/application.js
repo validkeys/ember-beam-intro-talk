@@ -34,7 +34,7 @@ export default Ember.Route.extend({
       
       model.pushObject(newMessage);
       alert("Post Created!");
-      // this.get('Beam').push("post created", { post: model }, this);
+      // this.get('Beam').push("post created", { post: newMessage }, this);
     },
 
     postEdited(post) {
