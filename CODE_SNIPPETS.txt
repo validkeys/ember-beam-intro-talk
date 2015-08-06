@@ -24,8 +24,9 @@ Mixpanel setUserInfo:
         delete localUserData[prop];
       }
     });
-    
-    this.client().people.set(localUserData);
+
+    mixpanel.people.set(localUserData);
+    mixpanel.identify(this.get('serviceConfig.currentUserIdentifier'));
 
 
 --------------------
