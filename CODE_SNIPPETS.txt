@@ -7,7 +7,7 @@ mixpanel.init(providerConfiguration.auth.token);
 /* jshint ignore:end */
 
 
-MIXPANEL TOKEN: a3dc59bcb5ac053831557e554f66ba9e
+MIXPANEL TOKEN: cccecdda2111f5d76d154305ad38c633
 
 
 ----------------------
